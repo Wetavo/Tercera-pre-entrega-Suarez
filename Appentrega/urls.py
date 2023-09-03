@@ -1,15 +1,17 @@
 from django.urls import path
-from Appentrega.views import catedra, lista_catedra, inicio, alumnos, profesores, tareas
+from Appentrega.views import *
 
 
 urlpatterns = [
     
-    path('agrega-catedra/<nombre>/<camada>', catedra),
+    path('agregar-catedra/<nombre>/<camada>', catedra, name="Agregar"),
     path('lista-catedra/', lista_catedra),
-    path('', inicio),
-    path('catedra/', catedra),
-    path('profesores/', profesores),
-    path('alumnos/', alumnos),
-    path('tareas/', tareas),  
-    
-    ]  
+    path('', inicio, name="Inicio"),
+    path('catedra/', catedra, name="Catedra"),
+    path('profesores/', profesores, name="Profesores"),
+    path('alumnos/', alumnos, name="Alumnos"),
+    path('tareas/', tareas, name="Tareas"),  
+    path('catedra-formulario/', catedra_formulario, name="CatedraFormulario"), 
+    path('busqueda_camada/', busqueda_camada, name="busquedacamada"), 
+    path('buscar/', buscar, name="Buscar"), 
+]  
