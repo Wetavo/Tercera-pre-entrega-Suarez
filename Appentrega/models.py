@@ -16,12 +16,14 @@ class alumno(models.Model):
     email=models.EmailField(null=True)
     
     
-class profesor(models.Model):
-    nnombre=models.CharField(max_length=30)
+class Profesor(models.Model):
+    nombre=models.CharField(max_length=30)
     apellido=models.CharField(max_length=30)
     profesion=models.CharField(max_length=30)
     email=models.EmailField(null=True)  
     catedra = models.ManyToManyField(Catedra)
+    def __str__(self):
+        return self.nombre
     
 class tareas(models.Model):
     asignatura=models.CharField(max_length=30)

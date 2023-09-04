@@ -1,6 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from .forms import ProfesorForm
 from django.http import HttpResponse, HttpResponse
-from .models import Catedra
+from .models import Catedra, Profesor
 from .forms import CatedraFormulario
 
 # Create your views here.
@@ -76,4 +77,18 @@ def buscar(req):
         return render(req, "busqueda.html", {"catedra": catedra})
     else:
         return HttpResponse('Tu Busqueda No Coincide...')
+    
+    
+def registrar_profesor(req):
+    if req.method == 'POST':
+        miFormulario = ProfesorForm(req.POST)
+        if miFormulario.is_valid():
+            data = miFormulario.cleaned_data
+            profesor = Profesor(nombre=data["nombre_profesor"])
+            profesor.save()
+            return render(req, "inicio.html", {"mensaje": "Profesor Asignado con exito"} )
+    else:
+        miFormulario = ProfesorForm()
+    return render(req, "registro_profesor.html", {"miFormulario": miFormulario})
+
     
