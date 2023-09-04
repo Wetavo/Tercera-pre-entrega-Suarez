@@ -91,4 +91,15 @@ def registrar_profesor(req):
         miFormulario = ProfesorForm()
     return render(req, "registro_profesor.html", {"miFormulario": miFormulario})
 
+
+
+
+
+
+
+
+ 
+    
+
+
     

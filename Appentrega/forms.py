@@ -8,5 +8,8 @@ class CatedraFormulario(forms.Form) :
     
 class ProfesorForm(forms.Form):
     nombre_profesor = forms.CharField(max_length=100, label='Nombre del Profesor')
+    
+    
+
    
     

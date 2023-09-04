@@ -25,9 +25,6 @@ class Profesor(models.Model):
     def __str__(self):
         return self.nombre
     
-class tareas(models.Model):
-    asignatura=models.CharField(max_length=30)
-    fechaDeEntrega=models.DateField()
-    entregado=models.BooleanField()
+
     
     
