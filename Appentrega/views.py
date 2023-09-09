@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
-from .forms import ProfesorForm
+from .forms import ProfesorForm, AlumnoForm
 from django.http import HttpResponse, HttpResponse
-from .models import Catedra, Profesor
+from .models import Catedra, Profesor, Alumno
 from .forms import CatedraFormulario
 
 # Create your views here.
@@ -84,7 +84,7 @@ def registrar_profesor(req):
         miFormulario = ProfesorForm(req.POST)
         if miFormulario.is_valid():
             data = miFormulario.cleaned_data
-            profesor = Profesor(nombre=data["nombre_profesor"])
+            profesor = Profesor(nombre=data["nombre_profesor"], apellido=data["apellido_profesor"])
             profesor.save()
             return render(req, "inicio.html", {"mensaje": "Profesor Asignado con exito"} )
     else:
@@ -93,7 +93,24 @@ def registrar_profesor(req):
 
 
 
+def registrar_alumno(req):
+    if req.method == 'POST':
+        miFormulario = AlumnoForm(req.POST)
+        if miFormulario.is_valid():
+            data = miFormulario.cleaned_data
+            alumnos = Alumno(nombre=data["nombre_alumno"], apellido=data["apellido_alumno"])
+            alumnos.save()
+            return render(req, "inicio.html", {"mensaje": "Alumno Asignado con exito"} )
+    else:
+        miFormulario = AlumnoForm()
+    return render(req, "registro_Alumno.html", {"miFormulario": miFormulario})
 
+
+
+
+
+
+    
 
 
 

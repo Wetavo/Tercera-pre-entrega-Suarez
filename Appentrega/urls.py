@@ -17,6 +17,7 @@ urlpatterns = [
     path('busqueda_camada/', busqueda_camada, name="busquedacamada"), #Para Buscar Alguna Camada
     path('buscar/', buscar, name="Buscar"),
     path('registrar-profesor/', registrar_profesor, name="RegistrarProfesor"), 
+    path('registrar-alumno/', registrar_alumno, name="RegistrarAlumno"),
     
     
 ]  
